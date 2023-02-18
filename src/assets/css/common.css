@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanssc/v26/k3kIo84MPvpLmixcA63oeALZ3aGt9w.otf) format('opentype');
+}
+:root {
+  --primary-color: #4460f1;
+  --white-color: #ffffff;
+  --light-text-color: #9398b3;
+  --light-bg-color: #f2f4ff;
+  --dark-color: #333333;
+  --background-color: #fcfcff;
+}
+*,
+::before::after {
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--dark-color);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--background-color);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+ul {
+  list-style: none;
+}
+@-webkit-keyframes flip-scale-up-ver {
+  0% {
+    -webkit-transform: scale(1) rotateY(0);
+    transform: scale(1) rotateY(0);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotateY(90deg);
+    transform: scale(2.5) rotateY(90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateY(180deg);
+    transform: scale(1) rotateY(180deg);
+  }
+}
+@keyframes flip-scale-up-ver {
+  0% {
+    -webkit-transform: scale(1) rotateY(0);
+    transform: scale(1) rotateY(0);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotateY(90deg);
+    transform: scale(2.5) rotateY(90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateY(180deg);
+    transform: scale(1) rotateY(180deg);
+  }
+}
