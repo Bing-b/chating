@@ -8,9 +8,6 @@
 @import url(@/assets/css/common.css);
 @import url(//at.alicdn.com/t/c/font_3902583_kcteqi61y7.css);
 #app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
 }
 

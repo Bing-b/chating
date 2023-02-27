@@ -1,52 +1,56 @@
 <template>
   <el-row id="container">
-    <el-col :span="12" class="slogan">
-      <h1>你好 <br>Let's  to  chat</h1>
-      <p>如果你没有账号<br>可以<span @click="loginSwitch">点击这里</span>进行注册</p>
-      
-      <img src="../assets/image/face.png" alt="">
-    </el-col>
-    <el-col :span="12" class="box">
-      <el-col class="login">
-         <h2>{{ title }}</h2>
-         <el-form ref="form" :model="form" :rules="rules">
-            <el-form-item prop="tel">
-              <el-input v-model="form.tel"  maxlength="11" placeholder="账户" clearable></el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input v-model="form.password" maxlength="8" show-password placeholder="密码" clearable></el-input>
-            </el-form-item>
-            <el-form-item v-if="isRegister" prop="">
-              <el-input placeholder="验证码"></el-input>
-              <div class="vcode"><span>获取验证码</span></div>
-            </el-form-item>
-            <el-form-item label="记住密码" prop="remember">
-              <el-switch v-model="form.remember" clearable></el-switch>
-            </el-form-item>
-            <el-form-item>
-              <el-button @click="login">{{ subTitle }}</el-button>
-            </el-form-item>
-            <el-form-item class="options">
-              <div class="separator">
-                <p>其他方式登录</p>
-              </div>
-              <ul>
-                <li><i class="iconfont icon-weixin"></i></li>
-                <li><i class="iconfont icon-iphone"></i></li>
-                <li><i class="iconfont icon-google"></i></li>
-              </ul>
-            </el-form-item>
-         </el-form>
+    <div class="bg"></div>
+    <el-row class="login-box">
+       <el-col :span="12" class="slogan">
+        <h1>你好 <br>Let's  to  chat</h1>
+        <p>如果你没有账号<br>可以<span @click="loginSwitch">点击这里</span>进行注册</p>
+        
+        <!-- <img src="../assets/image/face.png" alt=""> -->
+      </el-col> 
+      <el-col :span="12" class="box">
+        <el-col class="login">
+          <h2>{{ title }}</h2>
+          <el-form ref="form" :model="form" :rules="rules">
+              <el-form-item prop="tel">
+                <el-input v-model="form.tel"  maxlength="11" placeholder="账户" clearable></el-input>
+              </el-form-item>
+              <el-form-item prop="password">
+                <el-input v-model="form.password" maxlength="8" show-password placeholder="密码" clearable></el-input>
+              </el-form-item>
+              <!-- <el-form-item v-if="isRegister" prop="">
+                <el-input placeholder="验证码"></el-input>
+                <div class="vcode"><span>获取验证码</span></div>
+              </el-form-item> -->
+              <el-form-item label="记住密码" prop="remember">
+                <el-switch v-model="form.remember" clearable></el-switch>
+              </el-form-item>
+              <el-form-item>
+                <el-button @click="login">{{ subTitle }}</el-button>
+              </el-form-item>
+              <el-form-item class="options">
+                <div class="separator">
+                  <p>其他方式登录</p>
+                </div>
+                <ul>
+                  <li><i class="iconfont icon-weixin"></i></li>
+                  <li><i class="iconfont icon-iphone"></i></li>
+                  <li><i class="iconfont icon-google"></i></li>
+                </ul>
+              </el-form-item>
+          </el-form>
+        </el-col>
       </el-col>
-    </el-col>
+    </el-row>
   </el-row>
 </template>
 
 <script>
+import {bg} from '../plugin/animateBg'
 export default {
   data() {
     return {
-      isRegister: false,
+     // isRegister: false,
       title:'登录',
       subTitle: '登录',
       form: {
@@ -64,6 +68,9 @@ export default {
       }
     }
   },
+  mounted() {
+    bg()
+  },
   methods: {
     loginSwitch() {
       this.isRegister = true;
@@ -71,8 +78,7 @@ export default {
     login() {
       this.$refs.form.validate( valid => {
         if(valid) {
-           
-              
+           this.$router.push({path:'/home'})
         }
       })
     }
@@ -81,15 +87,60 @@ export default {
 </script>
 
 <style scoped lang="less">
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
 #container {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  max-width: 1200px;
+  justify-content: center;
+  height: 100%;
   width: 100%;
-  box-sizing: border-box;
+  
+  background: #edf3f8;
+  background: -moz-radial-gradient(center, ellipse cover, #edf3f8 1%, #dee3e8 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #edf3f8 1%, #dee3e8 100%);
+  background: radial-gradient(ellipse at center, #edf3f8 1%, #dee3e8 100%);
+
+  // z-index: -1;
+  // &::before {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   backdrop-filter:blur(30px);
+  //   z-index: 1;
+  // }
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .login-box {  
+    position: relative;
+    padding: 40px 30px;  
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    box-sizing: border-box;
+    z-index: 1;
+    &::before {
+      //content: '';
+      position: fixed;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+    padding: 50px 70px;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,.2);
+    }
+
+  }
   .slogan {
     position: relative;
     z-index: 1;
@@ -131,6 +182,9 @@ export default {
   }
   .box {
     padding-left: 16%;
+    padding: 50px 70px;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,.9);
     h2 {
       font-size: 40px;
     }
@@ -252,5 +306,7 @@ export default {
     }
   }
 }
+
+
 
 </style>
