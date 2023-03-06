@@ -1,4 +1,4 @@
-# chating
+# chating 1.00
 
 ## Project setup
 ```
